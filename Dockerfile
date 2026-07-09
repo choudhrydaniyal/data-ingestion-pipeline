@@ -13,7 +13,7 @@ ENV PATH="/app/.venv/bin:$PATH"
 # Copy dependency files first (better layer caching)
 COPY "pyproject.toml" "uv.lock" ".python-version" ./
 # Install dependencies from lock file (ensures reproducible builds)
-RUN uv sync --locked
+RUN uv sync --locked --no-dev
 
 # Copy application code
 COPY ingest_data.py .
